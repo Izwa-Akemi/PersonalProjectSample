@@ -17,7 +17,7 @@
 </head>
 
 <body>
-	<header>
+<header>
 		<!--スマートフォン-->
 		<nav class="menu">
 			<div class="logo">
@@ -27,8 +27,8 @@
 				<div class="menu-inner">
 					<ul>
 
-						<li class="menu__item"><a th:href="@{/categoryAll}">カテゴリ一覧</a></li>
-						<li class="menu__item"><a th:href="@{/blogAll}">投稿記事一覧</a></li>
+						<li class="menu__item"><a th:href="@{/categoryall}">カテゴリ一覧</a></li>
+						<li class="menu__item"><a th:href="@{/blogall}">投稿記事一覧</a></li>
 						<li class="menu__item"><form th:action="@{/logout}" method="post"><a href="#" onclick="this.parentNode.submit()">ログアウト</a></form></li>
 
 					</ul>
@@ -47,8 +47,8 @@
 					<a href=""><img src="../images/logo.png" alt=""></a>
 				</div>
 				<ul class="pc-list">
-					<li class="pc-list__item"><a th:href="@{/categoryAll}">カテゴリ一覧</a></li>
-					<li class="pc-list__item"><a th:href="@{/blogAll}">投稿記事一覧</a></li>
+					<li class="pc-list__item"><a th:href="@{/categoryall}">カテゴリ一覧</a></li>
+					<li class="pc-list__item"><a th:href="@{/blogall}">投稿記事一覧</a></li>
 					<li class="pc-list__item"><form th:action="@{/logout}" method="post"><a href="#" onclick="this.parentNode.submit()">ログアウト</a></form></li>
 					
 				</ul>
@@ -66,7 +66,7 @@
 
 					<div class="all-view-article" th:each="blog:${blogList}">
 						<!--<a th:href="@{/blogDetail/{blogId}(blogId=${blog.blogId})}" class="all-view-colum">-->
-						<a th:href="'/blogDetail/'+${blog.blogId}" class="all-view-colum">
+						<a th:href="'/blogdetail/'+${blog.blogId}" class="all-view-colum">
 							<div class="all-view__category">
 								<p th:text=" ${blog.categoryName}">
 								</p>

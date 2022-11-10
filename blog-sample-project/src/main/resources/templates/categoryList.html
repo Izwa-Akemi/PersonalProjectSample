@@ -13,14 +13,14 @@
 <body>
 	<header class="media__header">
 		<div class="header__logo">
-			<a href="https://snowden-light.com">
+			 <a th:href="@{/blog}">
 				<img th:src="@{\images\logo.png}">
 			</a>
 		</div>
 		<nav class="header__nav pc">
 			<ul class="flex__item">
 				<li class="nav__list" th:each="category : ${categoryList}">
-						<a th:href="@{/blogCategoryList/{categoryName}(categoryName=${category.categoryName})}" class="nav__link"　th:text="${category.categoryName}"></a>
+						<a th:href="@{/blogcategorylist/{categoryName}(categoryName=${category.categoryName})}" class="nav__link"　th:text="${category.categoryName}"></a>
 				</li>
 			</ul>
 		</nav>
@@ -37,7 +37,7 @@
 			<div class="flex__item">
 				<div class="article-wrap">
 					<div class="flex__item">
-						<a class="article__card" th:href="@{/blogUserDetail/{blogId}(blogId=${blog.blogId})}" th:each="blog:${blogList}">
+						<a class="article__card" th:href="@{/bloguserdetail/{blogId}(blogId=${blog.blogId})}" th:each="blog:${blogList}">
 							<div class="article__card-eyecatch">
 							   <img th:src="@{/blog-image/{items}(items=${blog.blogImage})}">
 							</div>
@@ -54,7 +54,7 @@
 					<div class="category">
 						<h2 class="category__ttl">Category</h2>
 						<ul>
-							<li class="category__list" th:each="category : ${categoryList}">	<li class="category__list" th:each="category : ${categoryList}"><a th:href="@{/blogCategoryList/{categoryName}(categoryName=${category.categoryName})}" class="category__link"　th:text="${category.categoryName}"></a></li></li>
+							<li class="category__list" th:each="category : ${categoryList}">	<li class="category__list" th:each="category : ${categoryList}"><a th:href="@{/blogcategorylist/{categoryName}(categoryName=${category.categoryName})}" class="category__link"　th:text="${category.categoryName}"></a></li></li>
 						</ul>
 					</div>
 				</aside>

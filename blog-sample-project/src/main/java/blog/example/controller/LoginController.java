@@ -14,6 +14,7 @@ public class LoginController {
 	@Autowired
 	UserService accountService;
 	
+	//ログイン画面を表示
 	@GetMapping("/login")
 	public String getLoginPage() {
 		return "login.html";

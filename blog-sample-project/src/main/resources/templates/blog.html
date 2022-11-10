@@ -13,14 +13,14 @@
 <body>
     <header class="media__header">
         <div class="header__logo">
-          <a href="https://snowden-light.com">
+          <a th:href="@{/blog}">
 				<img th:src="@{\images\logo.png}">
 			</a>
         </div>
        	<nav class="header__nav pc">
 			<ul class="flex__item">
 				<li class="nav__list" th:each="category : ${categoryList}">
-					<a th:href="@{/blogCategoryList/{categoryName}(categoryName=${category.categoryName})}" class="nav__link"　th:text="${category.categoryName}"></a>
+					<a th:href="@{/blogcategorylist/{categoryName}(categoryName=${category.categoryName})}" class="nav__link"　th:text="${category.categoryName}"></a>
 				</li>
 			</ul>
 		</nav>

@@ -18,6 +18,7 @@
 
 <body>
 	<header>
+<header>
 		<!--スマートフォン-->
 		<nav class="menu">
 			<div class="logo">
@@ -27,8 +28,8 @@
 				<div class="menu-inner">
 					<ul>
 
-						<li class="menu__item"><a th:href="@{/categoryAll}">カテゴリ一覧</a></li>
-						<li class="menu__item"><a th:href="@{/blogAll}">投稿記事一覧</a></li>
+						<li class="menu__item"><a th:href="@{/categoryall}">カテゴリ一覧</a></li>
+						<li class="menu__item"><a th:href="@{/blogall}">投稿記事一覧</a></li>
 						<li class="menu__item"><form th:action="@{/logout}" method="post"><a href="#" onclick="this.parentNode.submit()">ログアウト</a></form></li>
 
 					</ul>
@@ -47,8 +48,8 @@
 					<a href=""><img src="../images/logo.png" alt=""></a>
 				</div>
 				<ul class="pc-list">
-					<li class="pc-list__item"><a th:href="@{/categoryAll}">カテゴリ一覧</a></li>
-					<li class="pc-list__item"><a th:href="@{/blogAll}">投稿記事一覧</a></li>
+					<li class="pc-list__item"><a th:href="@{/categoryall}">カテゴリ一覧</a></li>
+					<li class="pc-list__item"><a th:href="@{/blogall}">投稿記事一覧</a></li>
 					<li class="pc-list__item"><form th:action="@{/logout}" method="post"><a href="#" onclick="this.parentNode.submit()">ログアウト</a></form></li>
 					
 				</ul>
@@ -59,7 +60,7 @@
 		<div class="main-inner">
 			<section class="register-section">
 				<h2>記事登録画面</h2>
-				<form method="POST" th:action="@{/blogUpdate}" enctype="multipart/form-data">
+				<form method="POST" th:action="@{/blogupdate}" enctype="multipart/form-data">
 					<div class="register-section-details">
 						<div class="register-section-details_flex">
 							<div>タイトル</div>
@@ -86,8 +87,8 @@
 							<div>Message</div>
 							<textarea name="message" th:text="${blogs.message}"></textarea>
 						</div>
-						<input type="text" name="userId" th:value="${userId}">
-						<input type="text" name="blogId" th:value="${blogs.blogId}">
+						<input type="hidden" name="userId" th:value="${userId}">
+						<input type="hidden" name="blogId" th:value="${blogs.blogId}">
 						<div class="register-section-details_flex">
 							<button class="edit" id="register">更新</button>
 							<button class="back-btn" onclick="history.back();" type="button">戻る</button>

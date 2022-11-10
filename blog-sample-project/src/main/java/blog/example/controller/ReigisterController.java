@@ -17,17 +17,20 @@ public class ReigisterController {
 	@Autowired
 	private UserService accountService;
 
+	//登録画面を表示
 	@GetMapping("/register")
 	public String getRegisterPage() {
 		return "register.html";
 	}
-
+	//ユーザー情報の登録
 	@PostMapping("/register")
 	public String register(@RequestParam String userName,@RequestParam String userEmail,
 			@RequestParam String password, Model model) {
+		//もし保存をした場合には、login.htmlへ遷移する
 		if (accountService.createAccount(userName, userEmail,password)) {
 			return "login.html";
 		} else {
+			//そうでない場合には、register.htmlに遷移する
 			return "register.html";
 
 		}

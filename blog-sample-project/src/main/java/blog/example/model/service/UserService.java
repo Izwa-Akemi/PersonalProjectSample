@@ -16,9 +16,12 @@ import blog.example.model.entity.UserEntity;
 public class UserService {
 	@Autowired
 	private UserDao userDao;
-
+	  //ユーザの情報を保存する
 	public boolean createAccount(String userName,String userEmail, String password) {
+		//UserServiceから渡されるユーザ情報（ユーザ名、パスワード）を条件にDB検索で検索する
 		List<UserEntity> userList = userDao.findByUserNameAndPassword(userName, password);
+		//UserServiceから渡されるユーザ情報（ユーザ名、パスワード）を条件にDB検索で検索した結果
+		//なかった場合には、保存
 		if (userList.isEmpty()) {
 			userDao.save(new UserEntity(userName,userEmail, password));
 			WebSecurityConfig.addUser(userEmail, password);
@@ -27,24 +30,15 @@ public class UserService {
 			return false;
 		}
 	}
-
+    //ユーザの一覧を取得する
 	public List<UserEntity> getAllAccounts() {
 		return userDao.findAll();
 	}
 
 	//idを見つける
+	//コントローラーでわたってきたuserEmailを基にしてDBを検索
 	public UserEntity selectById(String userEmail) {
 		return userDao.findByUserEmail(userEmail);
 	}
 
-	//ログイン処理
-	//	public UserEntity findByUserNameAndPassword(String userName, String password) {
-	//		List<UserEntity> userList = repository.findByUserNameAndPassword(userName, password);
-	//	    if(userList.isEmpty()){
-	//	        return null;
-	//	    }else{
-	//	        return userList.get(0);
-	//	    }
-	//
-	//	}
 }

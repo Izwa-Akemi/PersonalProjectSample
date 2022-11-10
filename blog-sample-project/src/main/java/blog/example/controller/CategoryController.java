@@ -20,8 +20,8 @@ public class CategoryController {
 	@Autowired
 	private CategoryService categoryService;
 
-	//一覧を表示
-	@GetMapping("/categoryAll")
+	//カテゴリー一覧を表示
+	@GetMapping("/categoryall")
 	public String getCategoryAll(Model model) {
 		List<CategoryEntity>categorylist = categoryService.findByAll();
 		model.addAttribute("categorylist",categorylist);
@@ -29,16 +29,16 @@ public class CategoryController {
 		return "category_all_view.html";
 	}
 
-	//登録画面を表示
-	@GetMapping("/categoryRegister")
+	//カテゴリー登録画面を表示
+	@GetMapping("/categoryregister")
 	public String geCategoryListRegister() {
 		return "category_register_view.html";
 	}
-	//登録内容を保存
-	@PostMapping("/categoryCreate")
+	//カテゴリー登録内容を保存
+	@PostMapping("/categorycreate")
 	public String register(@RequestParam String categoryName) {
 		categoryService.insert(categoryName);
-		return "redirect:/categoryAll";
+		return "redirect:/categoryall";
 	}
 
 }

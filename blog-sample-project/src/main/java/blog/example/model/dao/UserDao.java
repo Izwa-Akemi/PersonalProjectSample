@@ -13,7 +13,10 @@ import blog.example.model.entity.UserEntity;
 
 @Repository
 public interface UserDao extends JpaRepository<UserEntity, Long> {
-	UserEntity deleteAllByPassword(String password);
+	//UserServiceから渡されるユーザ情報（ユーザ名、パスワード）を条件にDB検索
 	List<UserEntity> findByUserNameAndPassword(String userName, String password);
+	//UserServiceから渡されるユーザ情報（メールアドレス）を条件にDB検索
 	UserEntity findByUserEmail(String userEmail);
+	//UserServiceから渡されるユーザ情報を基にDBへ保存する
+	UserEntity save(UserEntity userEntity);
 }
