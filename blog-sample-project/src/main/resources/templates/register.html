@@ -26,13 +26,7 @@
             <div class="menu-contents">
                 <div class="menu-inner">
                     <ul>
-                        <li class="menu__item"><a href="">ブランド一覧</a></li>
-                        <li class="menu__item"><a href="">ジャンル一覧</a></li>
-                        <li class="menu__item"><a href="">店舗一覧</a></li>
-                        <li class="menu__item"><a href="">動画一覧</a></li>
-                        <li class="menu__item"><a href="">管理者一覧</a></li>
-                        <li class="menu__item"><a href="">ログアウト</a></li>
-
+                        <li class="menu__item"><a th:href="@{/login}">ログイン</a></li>
                     </ul>
                 </div>
                 <div class="menu-toggle_btn">
@@ -49,12 +43,7 @@
                     <a href=""><img th:src="@{\images\logo.png}"></a>
                 </div>
                 <ul class="pc-list">
-                <li class="pc-list__item"><a href="">ブランド一覧</a></li>
-                    <li class="pc-list__item"><a href="">ジャンル一覧</a></li>
-                    <li class="pc-list__item"><a href="">店舗一覧</a></li>
-                    <li class="pc-list__item"><a href="">動画一覧</a></li>
-                    <li class="pc-list__item"><a href="">管理者一覧</a></li>
-                    <li class="pc-list__item"><a href="">ログアウト</a></li>
+                <li class="pc-list__item"><a th:href="@{/login}">ログイン</a></li>
                 </ul>
             </div>
         </nav>
@@ -88,7 +77,9 @@
             </section>
         </div>
     </main>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+   	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+			integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+		<script th:src="@{/js/common.js}"></script>
   
 </body>
 

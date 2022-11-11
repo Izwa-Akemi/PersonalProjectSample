@@ -28,6 +28,11 @@ public class CategoryService {
 	public void update(Long categoryId,String categoryName) {
 		categoryDao.save(new CategoryEntity(categoryId,categoryName));
 	}
+	
+	//CategoryIDを基にDBで検索をかける
+	public CategoryEntity selectCategoryId(Long categoryId) {
+		return categoryDao.findByCategoryId(categoryId);
+	}
 
 	//削除
 	public void delete(Long categoryId) {

@@ -40,5 +40,9 @@ public class BlogService {
 	public List<BlogEntity> selectByCategoryName(String categoryName){
 		return blogDao.findByCategoryName(categoryName);
 	}
+	//削除
+	public List<BlogEntity>deleteBlog(Long blogId){
+		return blogDao.deleteByBlogId(blogId);
+	}
 
 }

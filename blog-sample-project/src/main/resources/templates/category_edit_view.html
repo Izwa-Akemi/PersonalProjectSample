@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-     <link rel="stylesheet" th:href="@{./css/reset.css}">
-    <link rel="stylesheet" th:href="@{./css/style.css}">
+     <link rel="stylesheet" th:href="@{/css/reset.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500&display=swap" rel="stylesheet">
@@ -59,11 +59,12 @@
         <div class="main-inner">
             <section class="register-section">
                 <h2>カテゴリー登録画面</h2>
-                <form method="POST" th:action="@{/categorycreate}">
+                <form method="POST" th:action="@{/categoryupdate}">
                     <div class="register-section-details">
                         <div class="register-section-details_flex">
                             <div>CategoryName</div>
-                            <input type="text" name="categoryName" value="">
+                            <input type="text" name="categoryName" th:value="${category.categoryName}">
+                               <input type="text" name="categoryId" th:value="${category.categoryId}">
                         </div>
                         <div class="register-section-details_flex">
                                <button id="register" class="edit_disable">登録</button>

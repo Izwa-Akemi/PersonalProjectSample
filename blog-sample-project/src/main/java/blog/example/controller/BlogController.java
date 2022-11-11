@@ -165,6 +165,14 @@ public class BlogController {
 
 		return "redirect:/blogall";
 	}
+	
+	//ブログの内容を削除
+	@PostMapping("/delete")
+	public String blogDelete(@RequestParam Long blogId) {
+		blogService.deleteBlog(blogId);
+		return "redirect:/blogall";
+	}
+	
 /*
  * ユーザー側の処理
  */

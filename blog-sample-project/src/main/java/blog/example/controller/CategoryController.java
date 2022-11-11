@@ -40,5 +40,24 @@ public class CategoryController {
 		categoryService.insert(categoryName);
 		return "redirect:/categoryall";
 	}
+	//カテゴリー編集画面の表示
+	@GetMapping("/categoryedit/{categoryId}")
+	public String getCategroyEditPage(@PathVariable Long categoryId,Model model) {
+		CategoryEntity categoryEntity = categoryService.selectCategoryId(categoryId);
+		model.addAttribute("category",categoryEntity);
+		return "category_edit_view.html";
+	}
+	@PostMapping("/categoryupdate")
+	public String update(@RequestParam String categoryName,@RequestParam Long categoryId) {
+		categoryService.update(categoryId, categoryName);
+		return "redirect:/categoryall";
+	}
+	//カテゴリー登録内容を削除
+		@PostMapping("/categorydelete")
+		public String deleteCategory(@RequestParam Long categoryId) {
+			categoryService.delete(categoryId);
+			return "redirect:/categoryall";
+		}
+
 
 }
