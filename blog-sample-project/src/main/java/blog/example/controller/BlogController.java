@@ -47,10 +47,10 @@ public class BlogController {
 	//通常のURLデフォルトの場合には、blogallにリダイレクトさせる
 	@GetMapping("/")
 	public String index(){
-		return "redirect:/blogall";
+		return "redirect:/blog/all";
 	}
 	//管理者側のブログ一覧を表示
-	@GetMapping("/blogall")
+	@GetMapping("/blog/all")
 	public String getLoginPage(Model model) {
 		//		現在のリクエストに紐づく Authentication を取得するには SecurityContextHolder.getContext().getAuthentication() とする。
 		//		SecurityContextHolder.getContext() は、現在のリクエストに紐づく SecurityContext を返している。
@@ -75,7 +75,7 @@ public class BlogController {
 	}
 
 	//ブログ記事の登録
-	@GetMapping("/blogcreate")
+	@GetMapping("/blog/create")
 	public String getBlogCreatePage(Model model) {
 		//		現在のリクエストに紐づく Authentication を取得するには SecurityContextHolder.getContext().getAuthentication() とする。
 		//		SecurityContextHolder.getContext() は、現在のリクエストに紐づく SecurityContext を返している。
@@ -98,7 +98,7 @@ public class BlogController {
 	}
 
 	//登録内容を保存
-	@PostMapping("/blogregister")
+	@PostMapping("/blog/register")
 	public String register(@RequestParam String blogTitle,@RequestParam("blogImage") MultipartFile blogImage,@RequestParam String categoryName,@RequestParam String message,@RequestParam Long userId) {
 			//ファイルの名前を取得する
 		String fileName = blogImage.getOriginalFilename();
@@ -116,12 +116,12 @@ public class BlogController {
 		//ファイルのアップロード処理後に、サービスクラスのメソッドに値を渡して保存する
 		blogService.insert(blogTitle, fileName, categoryName, message, userId);
 
-		return "redirect:/blogall";
+		return "redirect:/blog/all";
 	}
 
 	//ブログ記事の詳細を表示させる
 	//リンクタグで記載したblogIdを取得する
-	@GetMapping("/blogdetail/{blogId}")
+	@GetMapping("/blog/detail/{blogId}")
 	public String getBlogDetailPage(@PathVariable Long blogId, Model model) {
 		//		現在のリクエストに紐づく Authentication を取得するには SecurityContextHolder.getContext().getAuthentication() とする。
 		//		SecurityContextHolder.getContext() は、現在のリクエストに紐づく SecurityContext を返している。
@@ -146,7 +146,7 @@ public class BlogController {
 	}
 
 	//登録内容を修正（更新）
-	@PostMapping("/blogupdate")
+	@PostMapping("/blog/update")
 	public String updateData(@RequestParam Long blogId,@RequestParam String blogTitle,@RequestParam("blogImage") MultipartFile blogImage,@RequestParam String categoryName,@RequestParam String message,@RequestParam Long userId) {
 		//ファイルの名前を取得する
 		String fileName = blogImage.getOriginalFilename();
@@ -163,7 +163,7 @@ public class BlogController {
 		//ファイルのアップロード処理後に、サービスクラスのメソッドに値を渡して保存する
 		blogService.update(blogId, blogTitle, fileName, categoryName, message, userId);
 
-		return "redirect:/blogall";
+		return "redirect:/blog/all";
 	}
 	
 	//ブログの内容を削除
@@ -188,7 +188,7 @@ public class BlogController {
 		return "index.html";
 	}
 
-	@GetMapping("/bloguserdetail/{blogId}")
+	@GetMapping("/blog/userd/etail/{blogId}")
 	public String getBlogUserDetailPage(@PathVariable Long blogId, Model model) {
 		//blogのテーブルの中から、blogIdで検索をかけて該当する該当するブログの情報を引っ張り出す。
 		BlogEntity blogs = blogService.selectByBlogId(blogId);
@@ -199,7 +199,7 @@ public class BlogController {
 		return "blog.html";
 	}
 
-	@GetMapping("/blogcategorylist/{categoryName}")
+	@GetMapping("/blog/category/list/{categoryName}")
 	public String getBlogUserDetailPage(@PathVariable String categoryName, Model model) {
 		//blogのテーブルの中から、categoryNameで検索をかけて該当する該当するブログの情報を引っ張り出す。
 		List<BlogEntity> blogList = blogService.selectByCategoryName(categoryName);
@@ -208,6 +208,6 @@ public class BlogController {
 		model.addAttribute("categoryList",categoryList);
 		model.addAttribute("categoryName",categoryName);
 		model.addAttribute("blogList",blogList);	
-		return "categoryList.html";
+		return "category_list.html";
 	}
 }

@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-     <link rel="stylesheet" th:href="@{./css/reset.css}">
-    <link rel="stylesheet" th:href="@{./css/style.css}">
+     <link rel="stylesheet" th:href="@{/css/reset.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500&display=swap" rel="stylesheet">
@@ -27,8 +27,8 @@
 				<div class="menu-inner">
 					<ul>
 
-						<li class="menu__item"><a th:href="@{/categoryall}">カテゴリ一覧</a></li>
-						<li class="menu__item"><a th:href="@{/blogall}">投稿記事一覧</a></li>
+						<li class="menu__item"><a th:href="@{/category/all}">カテゴリ一覧</a></li>
+						<li class="menu__item"><a th:href="@{/blog/all}">投稿記事一覧</a></li>
 						<li class="menu__item"><form th:action="@{/logout}" method="post"><a href="#" onclick="this.parentNode.submit()">ログアウト</a></form></li>
 
 					</ul>
@@ -47,8 +47,8 @@
 					<a href=""><img src="../images/logo.png" alt=""></a>
 				</div>
 				<ul class="pc-list">
-					<li class="pc-list__item"><a th:href="@{/categoryall}">カテゴリ一覧</a></li>
-					<li class="pc-list__item"><a th:href="@{/blogall}">投稿記事一覧</a></li>
+					<li class="pc-list__item"><a th:href="@{/category/all}">カテゴリ一覧</a></li>
+					<li class="pc-list__item"><a th:href="@{/blog/all}">投稿記事一覧</a></li>
 					<li class="pc-list__item"><form th:action="@{/logout}" method="post"><a href="#" onclick="this.parentNode.submit()">ログアウト</a></form></li>
 					
 				</ul>
@@ -59,7 +59,7 @@
         <div class="main-inner">
             <section class="register-section">
                 <h2>カテゴリー登録画面</h2>
-                <form method="POST" th:action="@{/categorycreate}">
+                <form method="POST" th:action="@{/category/create}">
                     <div class="register-section-details">
                         <div class="register-section-details_flex">
                             <div>CategoryName</div>

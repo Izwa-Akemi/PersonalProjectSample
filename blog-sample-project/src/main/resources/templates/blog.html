@@ -20,7 +20,7 @@
        	<nav class="header__nav pc">
 			<ul class="flex__item">
 				<li class="nav__list" th:each="category : ${categoryList}">
-					<a th:href="@{/blogcategorylist/{categoryName}(categoryName=${category.categoryName})}" class="nav__link"　th:text="${category.categoryName}"></a>
+					<a th:href="@{/blog/category/list/{categoryName}(categoryName=${category.categoryName})}" class="nav__link"　th:text="${category.categoryName}"></a>
 				</li>
 			</ul>
 		</nav>

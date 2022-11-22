@@ -25,12 +25,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 		.authorizeRequests()
-		.antMatchers("/blog","/bloguserdetail/**","/blogcategorylist/**","/register","/css/**", "/js/**","/blog-image/**","/images/**").permitAll()
+		.antMatchers("/blog","/blog/user/detail/**","/blog/category/list/**","/register","/css/**", "/js/**","/blog-image/**","/images/**").permitAll()
 		.anyRequest().authenticated()
 		.and()
 		.formLogin()
 		.loginPage("/login")
-		.defaultSuccessUrl("/blogall")
+		.defaultSuccessUrl("/blog/all")
 		.usernameParameter("userEmail") //リクエストパラメータのname属性を明示
 		.passwordParameter("password")
 		.permitAll()

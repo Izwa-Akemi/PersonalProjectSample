@@ -20,7 +20,7 @@
 		<nav class="header__nav pc">
 			<ul class="flex__item">
 				<li class="nav__list" th:each="category : ${categoryList}">
-					<a th:href="@{/blogcategorylist/{categoryName}(categoryName=${category.categoryName})}" class="nav__link"　th:text="${category.categoryName}"></a>
+						<a th:href="@{/blog/category/list/{categoryName}(categoryName=${category.categoryName})}" class="nav__link"　th:text="${category.categoryName}"></a>
 				</li>
 			</ul>
 		</nav>
@@ -28,7 +28,7 @@
 	<main>
 
 		<div class="media-firstview">
-			<h1 class="media__fv-ttl">Commit to the growth<br>for everyone</h1>
+			<h1 class="media__fv-ttl" th:text="${categoryName}"></h1>
 		</div>
 
 		<div class="container">
@@ -54,7 +54,7 @@
 					<div class="category">
 						<h2 class="category__ttl">Category</h2>
 						<ul>
-							<li class="category__list" th:each="category : ${categoryList}"><a th:href="@{/blog/category/list/{categoryName}(categoryName=${category.categoryName})}" class="category__link"　th:text="${category.categoryName}"></a></li>
+							<li class="category__list" th:each="category : ${categoryList}">	<li class="category__list" th:each="category : ${categoryList}"><a th:href="@{/blog/category/list/{categoryName}(categoryName=${category.categoryName})}" class="category__link"　th:text="${category.categoryName}"></a></li></li>
 						</ul>
 					</div>
 				</aside>
