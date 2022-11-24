@@ -18,9 +18,9 @@ public class UserService {
 	private UserDao userDao;
 	  //ユーザの情報を保存する
 	public boolean createAccount(String userName,String userEmail, String password) {
-		//UserServiceから渡されるユーザ情報（ユーザ名、パスワード）を条件にDB検索で検索する
+		//RegisterControllerから渡されるユーザ情報（ユーザ名、パスワード）を条件にDB検索で検索する
 		List<UserEntity> userList = userDao.findByUserNameAndPassword(userName, password);
-		//UserServiceから渡されるユーザ情報（ユーザ名、パスワード）を条件にDB検索で検索した結果
+		//RegisterControllerから渡されるユーザ情報（ユーザ名、パスワード）を条件にDB検索で検索した結果
 		//なかった場合には、保存
 		if (userList.isEmpty()) {
 			userDao.save(new UserEntity(userName,userEmail, password));

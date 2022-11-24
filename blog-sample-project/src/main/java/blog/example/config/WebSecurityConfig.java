@@ -54,11 +54,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.roles("USER")
 				.build()
 				).toList();
-
+		//		UserDetails user1 =
+		//				User.withDefaultPasswordEncoder()
+		//				.username("alice@test.com")
+		//				.password("Alice123456")
+		//				.roles("USER")
+		//				.build();
+		//        manager.createUser(user1);
+		/*manager.createUser(User.withDefaultPasswordEncoder()
+				.username("alice@test.com")
+				.password("Alice123456")
+				.roles("USER")
+				.build());*/
 		manager = new InMemoryUserDetailsManager(users);
-
 		return manager;
 	}
+
 
 	public static void addUser(String userEmail, String password) {
 		manager.createUser(User.withDefaultPasswordEncoder()
@@ -67,4 +78,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.roles("USER")
 				.build());
 	}
+
+
 }

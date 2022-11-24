@@ -3,6 +3,8 @@ package blog.example.controller;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
@@ -31,10 +33,6 @@ import blog.example.model.service.UserService;
 @SpringBootTest
 @AutoConfigureMockMvc
 public class LoginControllerTest {
-	@MockBean
-	private UserService userService;
-	@MockBean
-	private BlogService blogService;
 	@Autowired
 	private MockMvc mockMvc;
 
@@ -42,7 +40,7 @@ public class LoginControllerTest {
 	@Test
 	//ログインページ正常に表示させる
 	public void AccessLoginPage() throws Exception{
-		
+
 		RequestBuilder request = MockMvcRequestBuilders//
 				.get("/login");
 
@@ -51,18 +49,19 @@ public class LoginControllerTest {
 		.andExpect(view().name("login.html"));
 
 	}
-
 	@Test
-	public void AccessDefaultPage() throws Exception{
-		
+	//ログインが成功した場合、ブログ一覧ページに遷移する
+	public void testLogin_CorrectInfo_Succeed() throws Exception {
 		RequestBuilder request = MockMvcRequestBuilders
 				.post("/login")
 				//パラメータとしてユーザーの名前とユーザーのパスワードを受け取る。
-				.param("userEmail", "bob@test.com")
-				.param("password", "Bob54321");
+				.param("userEmail", "alice@test.com")
+				.param("password", "Alice123456")
+		        .with(csrf());
 
 		mockMvc.perform(request)//
-		.andExpect(redirectedUrl("http://localhost:8080/blogall"));
-		//.andExpect(model().attribute("blogList", blogList));
+		.andExpect(redirectedUrl("/blog/all"));
 	}
+
+
 }
