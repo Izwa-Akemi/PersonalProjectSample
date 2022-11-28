@@ -55,7 +55,7 @@ public class AdminLoginController {
 			return "/admin/admin_all_view.html";
 		}
 	}
-	//user_idをキーにして，cartからcart_idを取得．
+	//ログアウト処理
 			@GetMapping("/logout")
 			public String adminLogout() {
 				//セッションの情報を削除する。
