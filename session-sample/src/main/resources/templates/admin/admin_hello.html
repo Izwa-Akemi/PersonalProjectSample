@@ -60,24 +60,8 @@
             <div class="genre">
 
                 <div class="genre-register__button">
-                    <a th:href="@{/admin/hello}" class="btn btn--orange btn--radius">SessoinTest</a>
+                    <h2 th:text="'ようこそ'+${loginAdminName}+'さん'"></h2>
                 </div>
-                <table>
-                    <tr>
-                        <th>管理者名</th>
-                        <th>メールアドレス</th>
-                        <th>編集</th>
-                        <th>削除</th>
-                    </tr>
-                    <tr th:each="admin:${adminList}">
-                    <td th:text="${admin.adminName}"></td>
-                    <td th:text="${admin.adminEmail}"></td>
-                    <td th:text="${admin.password}"></td>
-                    </tr>
-                
-                       
-                
-                </table>
             </div>
         </div>
     </main>

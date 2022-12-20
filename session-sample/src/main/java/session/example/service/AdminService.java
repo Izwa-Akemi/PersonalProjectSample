@@ -16,7 +16,7 @@ public class AdminService {
 
 	//ログイン処理
 	public AdminEntity findByAdminEmailAndPassword(String adminEmail, String password) {
-		//コントローラークラスからadminNameとpasswordと受け取って結果を受け取る
+		//コントローラークラスからadminEmailとpasswordと受け取って結果を受け取る
 		List<AdminEntity> adminList = adminDao.findByAdminEmailAndPassword(adminEmail, password);
 		//もしadminListが空だった場合には、nullを返す処理
 		if(adminList.isEmpty()){

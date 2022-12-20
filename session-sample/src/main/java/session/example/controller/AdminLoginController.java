@@ -43,14 +43,18 @@ public class AdminLoginController {
 		}else {
 			//adminEntityの内容をsessionに保存する
 			session.setAttribute("admin",adminEntity);
+			
 			//adminServiceクラスのselecFindAll()を使用して、一覧を取得する。
 			List<AdminEntity>adminList = adminService.selectAdminAll();
 			//adminListをキーにしてadminListをitem_list.htmlに渡す。
 			model.addAttribute("adminList",adminList);
+			
 			//セッションから管理者の情報を取得する。
 			AdminEntity auth = (AdminEntity) session.getAttribute("admin");
 			//管理者情報(AdminEntity)から管理者名を取得する。
 			String loginAdminName = auth.getAdminName();
+			
+			
 			model.addAttribute("loginAdminName",loginAdminName);
 			return "/admin/admin_all_view.html";
 		}
